@@ -28,15 +28,18 @@ loss = {
     "C": "B"
 }
 
+
 def get_round_score(p1, p2):
-    if(p1 == p2):
+    if (p1 == p2):
         return 3 + points[p2]
-    elif(win[p1] == p2):
+    elif (win[p1] == p2):
         return 6 + points[p2]
     return points[p2]
 
+
 def part1(rounds):
     return sum([get_round_score(round[0], convert[round[1]]) for round in rounds])
+
 
 def part2(rounds):
     sum = 0
@@ -46,14 +49,12 @@ def part2(rounds):
 
         if (p2 == "X"):
             sum += get_round_score(p1, loss[p1])
-            print("LOSS",p1,loss[p1],sum)
         elif (p2 == "Y"):
             sum += get_round_score(p1, p1)
-            print("DRAW",p1,sum)
         else:
             sum += get_round_score(p1, win[p1])
-            print("WIN",p1,win[p1],sum)
     return sum
-    
+
+
 print(part1(data))
 print(part2(data))
